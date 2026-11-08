@@ -1,0 +1,68 @@
+[
+  {
+    "episode": 1,
+    "promo_id": "GOLD_EP01_ALTAR_CONFRONTATION",
+    "start_s": 11.0,
+    "end_s": 41.5,
+    "start_ts": "00:11.00",
+    "end_ts": "00:41.50",
+    "hook": "Matriarch steps in and commands Juliana to turn around, revealing Gerald is at the altar with Clarissa.",
+    "cliffhanger": "Clarissa gloatingly announces that Gerald is marrying her instead of Juliana.",
+    "notes": "Classic opening microdrama hook; cuts before family reacts."
+  },
+  {
+    "episode": 1,
+    "promo_id": "GOLD_EP01_SISTER_BETRAYAL",
+    "start_s": 39.1,
+    "end_s": 85.0,
+    "start_ts": "00:39.10",
+    "end_ts": "01:25.00",
+    "hook": "Clarissa's cruel reveal that Gerald is marrying her.",
+    "cliffhanger": "Juliana's father refuses to meet her gaze and completely disowns her.",
+    "notes": "High emotional intensity; altar betrayal."
+  },
+  {
+    "episode": 2,
+    "promo_id": "GOLD_EP02_VOW_SWAP",
+    "start_s": 15.0,
+    "end_s": 55.0,
+    "start_ts": "00:15.00",
+    "end_ts": "00:55.00",
+    "hook": "Gerald tears off Juliana's family veil or delivers vicious public rejection.",
+    "cliffhanger": "Juliana is cast out of the cathedral as doors slam.",
+    "notes": "Peak rejection melodrama."
+  },
+  {
+    "episode": 3,
+    "promo_id": "GOLD_EP03_STRANGER_ENTRANCE",
+    "start_s": 25.0,
+    "end_s": 65.0,
+    "start_ts": "00:25.00",
+    "end_ts": "01:05.00",
+    "hook": "A scarred stranger (Alexander) steps out from the shadows.",
+    "cliffhanger": "Alexander offers Juliana marriage to save her honor.",
+    "notes": "Inciting romance hook."
+  },
+  {
+    "episode": 4,
+    "promo_id": "GOLD_EP04_COTTAGE_CONFRONTATION",
+    "start_s": 10.0,
+    "end_s": 50.0,
+    "start_ts": "00:10.00",
+    "end_ts": "00:50.00",
+    "hook": "Thugs surround Juliana's carriage or cottage demanding money.",
+    "cliffhanger": "Alexander disarms three thugs in seconds.",
+    "notes": "Action & secret protector hook."
+  },
+  {
+    "episode": 5,
+    "promo_id": "GOLD_EP05_POISON_DISCOVERY",
+    "start_s": 20.0,
+    "end_s": 62.0,
+    "start_ts": "00:20.00",
+    "end_ts": "01:02.00",
+    "hook": "Juliana notices discoloration in the herbal tea goblet.",
+    "cliffhanger": "She realizes someone is deliberately administering arsenic to the Duchess.",
+    "notes": "Mystery and life-or-death stakes."
+  }
+]

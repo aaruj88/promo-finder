@@ -1,0 +1,63 @@
+{
+  "gold_count": 6,
+  "hits_at_threshold": 2,
+  "hit_rate": 0.3333,
+  "average_iou": 0.4021,
+  "threshold": 0.5,
+  "details": [
+    {
+      "gold_id": "GOLD_EP01_ALTAR_CONFRONTATION",
+      "episode": 1,
+      "gold_range": "00:11.00 - 00:41.50 (11.0s - 41.5s)",
+      "best_matched_promo": "PROMO_001_03",
+      "best_pred_range": "00:11.00 - 00:41.50",
+      "iou": 1.0,
+      "hit": true
+    },
+    {
+      "gold_id": "GOLD_EP01_SISTER_BETRAYAL",
+      "episode": 1,
+      "gold_range": "00:39.10 - 01:25.00 (39.1s - 85.0s)",
+      "best_matched_promo": "PROMO_001_03",
+      "best_pred_range": "00:11.00 - 00:41.50",
+      "iou": 0.0324,
+      "hit": false
+    },
+    {
+      "gold_id": "GOLD_EP02_VOW_SWAP",
+      "episode": 2,
+      "gold_range": "00:15.00 - 00:55.00 (15.0s - 55.0s)",
+      "best_matched_promo": "PROMO_002_01",
+      "best_pred_range": "00:00.00 - 00:12.00",
+      "iou": 0.2425,
+      "hit": false
+    },
+    {
+      "gold_id": "GOLD_EP03_STRANGER_ENTRANCE",
+      "episode": 3,
+      "gold_range": "00:25.00 - 01:05.00 (25.0s - 65.0s)",
+      "best_matched_promo": "PROMO_003_05",
+      "best_pred_range": "00:23.10 - 00:46.00",
+      "iou": 0.5012,
+      "hit": true
+    },
+    {
+      "gold_id": "GOLD_EP04_COTTAGE_CONFRONTATION",
+      "episode": 4,
+      "gold_range": "00:10.00 - 00:50.00 (10.0s - 50.0s)",
+      "best_matched_promo": "PROMO_004_12",
+      "best_pred_range": "00:03.40 - 00:25.80",
+      "iou": 0.3391,
+      "hit": false
+    },
+    {
+      "gold_id": "GOLD_EP05_POISON_DISCOVERY",
+      "episode": 5,
+      "gold_range": "00:20.00 - 01:02.00 (20.0s - 62.0s)",
+      "best_matched_promo": "PROMO_005_09",
+      "best_pred_range": "00:05.50 - 00:36.80",
+      "iou": 0.2973,
+      "hit": false
+    }
+  ]
+}

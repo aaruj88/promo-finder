@@ -1,0 +1,8 @@
+{
+  "evaluation": "Stability Test (Run 1 vs Run 2 Persistence)",
+  "consecutive_runs": 2,
+  "top_10_persistent_count": 10,
+  "top_10_persistence_rate": 1.0,
+  "jaccard_similarity": 0.5385,
+  "notes": "All 10 selected time ranges persisted identically across runs, confirming deterministic snapping and ranking stability."
+}

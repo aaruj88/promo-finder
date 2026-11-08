@@ -1,0 +1,427 @@
+[
+  {
+    "rank": 1,
+    "promo_id": "PROMO_002_01",
+    "segments": [
+      {
+        "episode": 2,
+        "start_s": 0.0,
+        "end_s": 12.0,
+        "start_ts": "00:00.00",
+        "end_ts": "00:12.00",
+        "first_line": "[L02 00:00.00-00:02.50] SEAMUS (Cold, Callous): \"I cannot marry you, Juliana.\"",
+        "last_line": "[L10 00:09.60-00:12.00] SEAMUS (Arrogant, Conceited): \"...and completely beneath the future I deserve.\""
+      },
+      {
+        "episode": 2,
+        "start_s": 20.9,
+        "end_s": 30.6,
+        "start_ts": "00:20.90",
+        "end_ts": "00:30.60",
+        "first_line": "[L17 00:20.90-00:23.70] SEAMUS (Indifferent, Unapologetic): \"Promises change when a better choice appears.\"",
+        "last_line": "[L21 00:27.80-00:30.50] SEAMUS (Resolute, Harsh): \"She is what I should have chosen from the beginning.\""
+      },
+      {
+        "episode": 2,
+        "start_s": 47.8,
+        "end_s": 56.7,
+        "start_ts": "00:47.80",
+        "end_ts": "00:56.70",
+        "first_line": "[L34 00:47.80-00:51.40] CLARISSA (Mocking, Spiteful): \"Why are you surprised, sister? Look at you.\"",
+        "last_line": "[L38 00:53.50-00:56.70] CLARISSA (Taunting, Giggling): \"You look like a kitchen maid who wandered into the wrong wedding.\""
+      },
+      {
+        "episode": 2,
+        "start_s": 74.4,
+        "end_s": 96.8,
+        "start_ts": "01:14.40",
+        "end_ts": "01:36.80",
+        "first_line": "[L55 01:14.40-01:16.40] JULIANA (Bitter, Defiant): \"Dignity?\"",
+        "last_line": "[L67 01:33.40-01:36.60] JULIANA (Decisive, Scathing): \"You have shown them exactly what your word is worth.\""
+      }
+    ],
+    "total_duration_s": 53.0,
+    "hook": "Gerald publicly humiliates Juliana at the altar, stating she is 'far too plain' and 'beneath the future I deserve,' while Clarissa gloats beside him.",
+    "cliffhanger": "Juliana turns her humiliation into a powerful indictment of Gerald's character, leaving him stunned and speechless, and the audience wondering how he will react and what Juliana will do next.",
+    "why_it_works": "Rank #1: High virality potential with 'public_humiliation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "public_humiliation",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 2,
+    "promo_id": "PROMO_001_03",
+    "segments": [
+      {
+        "episode": 1,
+        "start_s": 11.0,
+        "end_s": 41.5,
+        "start_ts": "00:11.00",
+        "end_ts": "00:41.50",
+        "first_line": "[L07 00:11.00-00:13.20] CAMERA: Medium shot as Juliana stops midway down the aisle, confronted by a haughty matriarch in black velvet stepping into the foreground.",
+        "last_line": "[L27 00:39.10-00:41.20] CLARISSA (Gloating, Smug): \"Because he is marrying me.\""
+      }
+    ],
+    "total_duration_s": 30.5,
+    "hook": "Juliana is stopped by a haughty matriarch who coldly tells her to turn around, revealing her fianc\u00e9 is 'not anymore' waiting for her.",
+    "cliffhanger": "Juliana's sister, Clarissa, smugly declares that Gerald is marrying her instead.",
+    "why_it_works": "Rank #2: High virality potential with 'public_humiliation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "public_humiliation",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 3,
+    "promo_id": "PROMO_003_06",
+    "segments": [
+      {
+        "episode": 3,
+        "start_s": 69.9,
+        "end_s": 85.5,
+        "start_ts": "01:09.90",
+        "end_ts": "01:25.50",
+        "first_line": "[L59 01:09.90-01:12.10] ALEXANDER (Low, Thunderous, Imposing): \"Take your hands off her.\"",
+        "last_line": "[L72 01:24.50-01:25.40] SOUND FX: A heavy, bone-rattling punch followed by the clatter and thud of the guard collapsing onto the stone floor."
+      },
+      {
+        "episode": 3,
+        "start_s": 90.4,
+        "end_s": 96.5,
+        "start_ts": "01:30.40",
+        "end_ts": "01:36.50",
+        "first_line": "[L77 01:30.40-01:31.60] ALEXANDER (Gentle, Protective): \"Are you hurt?\"",
+        "last_line": "[L81 01:34.10-01:36.30] ALEXANDER (Firm, Menacing): \"Good. Then don't touch her again.\""
+      }
+    ],
+    "total_duration_s": 21.7,
+    "hook": "A mysterious, imposing stranger dramatically intervenes, demanding the guards release Juliana and then swiftly incapacitating one with a powerful strike.",
+    "cliffhanger": "The stranger, having just knocked out a guard, menacingly warns the remaining guard not to touch Juliana again, leaving the audience eager to see the fallout.",
+    "why_it_works": "Rank #3: High virality potential with 'physical_action' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "physical_action",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 4,
+    "promo_id": "PROMO_003_05",
+    "segments": [
+      {
+        "episode": 3,
+        "start_s": 23.1,
+        "end_s": 46.0,
+        "start_ts": "00:23.10",
+        "end_ts": "00:46.00",
+        "first_line": "[L19 00:23.10-00:25.50] MATRIARCH (Harsh, Authoritative): \"Enough, Juliana.\"",
+        "last_line": "[L35 00:43.40-00:46.00] MATRIARCH (Cruel, Scornful): \"Wherever a discarded daughter belongs.\""
+      },
+      {
+        "episode": 3,
+        "start_s": 58.3,
+        "end_s": 64.5,
+        "start_ts": "00:58.30",
+        "end_ts": "01:04.50",
+        "first_line": "[L47 00:58.30-01:00.00] MATRIARCH (Shouting, Imperious): \"Guards! Remove her!\"",
+        "last_line": "[L54 01:03.00-01:04.50] SOUND FX: Muffled scuffle, rustle of heavy silk and frantic gasps echoing off cathedral stone."
+      }
+    ],
+    "total_duration_s": 29.1,
+    "hook": "Juliana's own mother disowns her and orders guards to remove her from the church, creating a shocking public humiliation.",
+    "cliffhanger": "Juliana is forcefully dragged from the church, screaming for help, as the scene cuts just before anyone intervenes.",
+    "why_it_works": "Rank #4: High virality potential with 'public_humiliation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "public_humiliation",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 5,
+    "promo_id": "PROMO_005_09",
+    "segments": [
+      {
+        "episode": 5,
+        "start_s": 5.5,
+        "end_s": 36.8,
+        "start_ts": "00:05.50",
+        "end_ts": "00:36.80",
+        "first_line": "[L05 00:05.50-00:06.60] ACTION: Juliana and the Mysterious Bearded Man pause on the stone steps, turning slightly back toward Lord Ashcroft.",
+        "last_line": "[L20 00:33.80-00:36.80] LORD ASHCROFT (O.S.): \"And you have chosen to become a stranger.\""
+      }
+    ],
+    "total_duration_s": 31.3,
+    "hook": "Immediate high-tension confrontation disrupting the scene.",
+    "cliffhanger": "Cuts at an unresolved shocking accusation leaving the protagonist stunned.",
+    "why_it_works": "Rank #5: High virality potential with 'confrontation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "confrontation",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 6,
+    "promo_id": "PROMO_004_12",
+    "segments": [
+      {
+        "episode": 4,
+        "start_s": 3.4,
+        "end_s": 25.8,
+        "start_ts": "00:03.40",
+        "end_ts": "00:25.80",
+        "first_line": "[L05 00:03.40-00:04.90] GERALD (Mocking, Arrogant): \"Look at him.\"",
+        "last_line": "[L20 00:23.50-00:25.80] JULIANA (Conflicted, Pained): \"You heard what they think I am.\""
+      }
+    ],
+    "total_duration_s": 22.4,
+    "hook": "Immediate high-tension confrontation disrupting the scene.",
+    "cliffhanger": "Cuts at an unresolved shocking accusation leaving the protagonist stunned.",
+    "why_it_works": "Rank #6: High virality potential with 'confrontation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "confrontation",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 7,
+    "promo_id": "PROMO_006_16",
+    "segments": [
+      {
+        "episode": 6,
+        "start_s": 91.7,
+        "end_s": 115.0,
+        "start_ts": "01:31.70",
+        "end_ts": "01:55.00",
+        "first_line": "[L80 01:31.70-01:33.80] CAMERA: Medium close-up of the Mysterious Bearded Man gesturing faintly to the modest room.",
+        "last_line": "[L96 01:51.50-01:55.00] CAMERA: Close-up on the crackling flames and glowing embers of the fireplace, slowly fading to black as the music swells warmly."
+      }
+    ],
+    "total_duration_s": 23.3,
+    "hook": "Sudden cruel insult that pushes the protagonist to her limit.",
+    "cliffhanger": "A defiant stare and ominous musical sting right before cut to black.",
+    "why_it_works": "Rank #7: High virality potential with 'betrayal' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "betrayal",
+      "hook_flag": "dialogue_hook"
+    }
+  },
+  {
+    "rank": 8,
+    "promo_id": "PROMO_007_17",
+    "segments": [
+      {
+        "episode": 7,
+        "start_s": 11.8,
+        "end_s": 45.0,
+        "start_ts": "00:11.80",
+        "end_ts": "00:45.00",
+        "first_line": "[L05 00:11.80-00:15.00] CAMERA: Medium shot as Aristocratic Woman steps out of the carriage into the misty air, shielding herself under an intricate lace parasol in an elegant lavender gown.",
+        "last_line": "[L20 00:41.20-00:44.80] JULIANA (Proud, Resolute): \"I work with my hands. There is no shame in that.\""
+      }
+    ],
+    "total_duration_s": 33.2,
+    "hook": "Immediate high-tension confrontation disrupting the scene.",
+    "cliffhanger": "Cuts at an unresolved shocking accusation leaving the protagonist stunned.",
+    "why_it_works": "Rank #8: High virality potential with 'confrontation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "confrontation",
+      "hook_flag": "standard"
+    }
+  },
+  {
+    "rank": 9,
+    "promo_id": "PROMO_007_19",
+    "segments": [
+      {
+        "episode": 7,
+        "start_s": 81.0,
+        "end_s": 111.5,
+        "start_ts": "01:21.00",
+        "end_ts": "01:51.50",
+        "first_line": "[L41 01:21.00-01:23.50] CAMERA: Two-shot framing the Scarred Bearded Man towering menacingly over Gerald, staring down at him with unyielding intensity.",
+        "last_line": "[L57 01:47.50-01:51.50] CAMERA: Medium shot as the Scarred Bearded Man stoops down, scoops up the heavy bundle of firewood in one arm, and walks calmly past Juliana toward their door."
+      }
+    ],
+    "total_duration_s": 30.5,
+    "hook": "Sudden cruel insult that pushes the protagonist to her limit.",
+    "cliffhanger": "A defiant stare and ominous musical sting right before cut to black.",
+    "why_it_works": "Rank #9: High virality potential with 'betrayal' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "betrayal",
+      "hook_flag": "action_hook"
+    }
+  },
+  {
+    "rank": 10,
+    "promo_id": "PROMO_008_20",
+    "segments": [
+      {
+        "episode": 8,
+        "start_s": 3.4,
+        "end_s": 24.3,
+        "start_ts": "00:03.40",
+        "end_ts": "00:24.30",
+        "first_line": "[L05 00:03.40-00:04.50] SOUND FX: Soft metallic click of the book clasp loosening.",
+        "last_line": "[L20 00:21.50-00:24.30] CAMERA: Close-up of Alexander, bathed in warm hearth embers, offering a subtle, knowing half-smile."
+      }
+    ],
+    "total_duration_s": 20.9,
+    "hook": "Immediate high-tension confrontation disrupting the scene.",
+    "cliffhanger": "Cuts at an unresolved shocking accusation leaving the protagonist stunned.",
+    "why_it_works": "Rank #10: High virality potential with 'confrontation' hook. The initial 3 seconds establish an immediate sharp confrontation. Cliffhanger strength: Cuts at the peak of unanswered dramatic tension with no resolution. Tournament wins: 24.",
+    "scores": {
+      "total": 90.5,
+      "hook": 28.0,
+      "cliffhanger": 27.5,
+      "standalone": 17.5,
+      "emotional_intensity": 8.5,
+      "show_representativeness": 9.0,
+      "pairwise_wins": 24
+    },
+    "flags": {
+      "spoiler_risk": "none",
+      "standalone_issues": [
+        "The exact historical relationship between the minor secondary characters.",
+        "What specific event triggered this confrontation prior to the clip."
+      ],
+      "cross_episode": false,
+      "hook_type": "confrontation",
+      "hook_flag": "dialogue_hook"
+    }
+  }
+]

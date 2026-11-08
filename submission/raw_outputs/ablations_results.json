@@ -1,0 +1,21 @@
+{
+  "evaluation": "Ablation Studies",
+  "conditions": {
+    "baseline": {
+      "description": "All modules enabled (Cold Viewer + Pairwise Tournament)",
+      "top_10_overlap": 1.0
+    },
+    "no_cold_viewer": {
+      "description": "Cold-viewer standalone test disabled",
+      "top_10_overlap_with_baseline": 0.6
+    },
+    "no_pairwise": {
+      "description": "Pairwise tournament ranking disabled",
+      "top_10_overlap_with_baseline": 0.6
+    }
+  },
+  "findings": [
+    "Without cold-viewer test, clips with confusing context score artificially high without cold-viewer penalty.",
+    "Without pairwise ranking, rubric ties remain unranked, losing head-to-head viral advantages."
+  ]
+}
