@@ -233,52 +233,169 @@ class HeuristicLLMGenerator:
         elif schema_name == "ColdViewerOutput":
             speakers = list(set(re.findall(r"([A-Z\s]{3,20})(?:\s*\([^)]*\))?:", user_prompt)))
             speakers = [s.strip() for s in speakers if s.strip() not in ["ACTION", "VISUAL", "SOUND", "CAMERA", "CLIP", "SCENE"]]
+            lore_terms = ["apothecary", "tithe", "decree", "treaty", "poison", "conspiracy", "rupert", "dowager"]
+            lore_hits = [t for t in lore_terms if t in user_prompt.lower()]
+
+            confusing = []
+            if len(speakers) > 3:
+                confusing.append("Multiple secondary characters speaking without clear hierarchy.")
+            if lore_hits:
+                confusing.append(f"Dialogue references unexplained backstory ({', '.join(lore_hits[:2])}).")
+            if not confusing:
+                confusing.append("Minor ambiguity about exact events prior to this argument.")
+
+            if len(speakers) <= 2 and not lore_hits:
+                score = 5
+            elif len(confusing) == 1:
+                score = 4
+            elif len(confusing) == 2:
+                score = 3
+            else:
+                score = 2
+
             return {
                 "characters": speakers[:4] or ["Juliana", "Gerald"],
                 "situation": "A tense confrontation between aristocrats where one party is publicly challenged or betrayed.",
-                "confusing_points": [
-                    "The exact historical relationship between the minor secondary characters.",
-                    "What specific event triggered this confrontation prior to the clip."
-                ],
-                "standalone_score": 4,
-                "notes": "The emotional conflict and power imbalance are immediately obvious, making it engaging without lore."
+                "confusing_points": confusing,
+                "standalone_score": score,
+                "notes": f"Cold viewer comprehension rated {score}/5 based on character clarity and exposition density."
             }
 
         elif schema_name == "CliffhangerSpoilerOutput":
+            clip_match = re.search(r"--- CLIP START ---\s*(.*?)\s*--- CLIP END ---", user_prompt, re.DOTALL)
+            clip_body = clip_match.group(1).strip() if clip_match else user_prompt
+            lines = [l for l in clip_body.splitlines() if l.strip()]
+            last_line = lines[-1] if lines else ""
+
+            if "?" in last_line:
+                unresolved_score = 0.94
+                analysis = "Cuts immediately on an urgent unanswered question, maximizing viewer suspense."
+            elif "!" in last_line:
+                unresolved_score = 0.90
+                analysis = "Cuts at the peak of an emphatic accusation, leaving the shock unresolved."
+            elif "..." in last_line or '"' in last_line:
+                unresolved_score = 0.83
+                analysis = "Leaves a trailing confrontational ultimatum hanging in the air."
+            else:
+                unresolved_score = 0.74
+                analysis = "Dialogue ends with declarative statement; moderate unresolved dramatic pull."
+
+            spoiler_kw = ["duke of ashburn", "rightful heir", "poisoned mother", "rupert's conspiracy"]
+            has_spoiler = any(k in user_prompt.lower() for k in spoiler_kw)
+            spoiler_risk = "minor" if has_spoiler else "none"
+
             return {
-                "unresolved_cliffhanger_score": 0.88,
-                "cliffhanger_analysis": "The cut point leaves a crucial accusation or threat hanging in the air with no resolution.",
+                "unresolved_cliffhanger_score": unresolved_score,
+                "cliffhanger_analysis": analysis,
                 "is_unresolved": True,
-                "spoiler_risk": "none",
-                "spoiler_analysis": "The clip showcases interpersonal conflict without revealing late-season ducal conspiracy twists."
+                "spoiler_risk": spoiler_risk,
+                "spoiler_analysis": "Safe for public promotion; preserves core identity mystery." if not has_spoiler else "Mentions late-stage plot elements."
             }
 
         elif schema_name == "RubricScores":
-            is_establishing = "establishing" in user_prompt.lower()
-            hook_score = 15.0 if is_establishing else 28.0
-            cliff_score = 27.5
-            standalone_score = 17.5
-            emo_score = 8.5
-            rep_score = 9.0
-            total = hook_score + cliff_score + standalone_score + emo_score + rep_score
+            prompt_lower = user_prompt.lower()
+
+            # 1. Hook Score (0-30)
+            is_establishing = "establishing" in prompt_lower or "camera_establishing" in prompt_lower
+            has_early_speech = "00:00." in prompt_lower or "00:01." in prompt_lower
+            confrontation_kw = ["cannot marry", "beneath", "refuse", "sister", "slap", "shame", "altar", "maid", "worth", "dignity"]
+            hook_hits = sum(1 for kw in confrontation_kw if kw in prompt_lower)
+
+            if is_establishing:
+                hook_score = 14.5
+                hook_just = "Starts with establishing shots before confrontation, slowing initial thumb-stop."
+            else:
+                hook_score = 22.0 + (3.0 if has_early_speech else 0.0) + min(5.0, hook_hits * 1.5)
+                hook_score = round(min(30.0, max(12.0, hook_score)), 1)
+                hook_just = f"Opens with sharp confrontation within first 3 seconds ({hook_hits} high-stakes cues)."
+
+            # 2. Cliffhanger Score (0-30)
+            if "unanswered" in prompt_lower or "0.94" in prompt_lower or "?" in prompt_lower:
+                cliff_score = 28.5
+                cliff_just = "Ends on a stinging, unanswered ultimatum with maximum next-episode pull."
+            elif "0.90" in prompt_lower or "emphatic" in prompt_lower:
+                cliff_score = 26.5
+                cliff_just = "Cuts at the climax of an explosive accusation."
+            elif "0.83" in prompt_lower:
+                cliff_score = 24.0
+                cliff_just = "Trailing dialogue cut creates good curiosity gap."
+            else:
+                cliff_score = 21.0
+                cliff_just = "Cut has decent tension but slightly softer emotional punch."
+
+            # 3. Standalone Appeal (0-20)
+            if "5/5" in user_prompt:
+                standalone_score = 19.0
+                standalone_just = "Crystal-clear two-character dynamic requiring zero prior knowledge."
+            elif "4/5" in user_prompt:
+                standalone_score = 16.5
+                standalone_just = "Clear protagonist vs antagonist stakes with minimal exposition confusion."
+            elif "3/5" in user_prompt:
+                standalone_score = 13.0
+                standalone_just = "Some secondary character lore slightly muddles cold comprehension."
+            else:
+                standalone_score = 10.5
+                standalone_just = "Context-heavy scene that relies on external plot knowledge."
+
+            # 4. Emotional Intensity (0-10)
+            emo_tags = ["cold", "bitter", "defiant", "mocking", "taunting", "callous", "furious", "shocked"]
+            emo_hits = sum(1 for tag in emo_tags if tag in prompt_lower)
+            exclamation_count = user_prompt.count("!")
+            emo_score = round(min(10.0, max(5.0, 6.0 + emo_hits * 0.7 + min(1.5, exclamation_count * 0.3))), 1)
+            emo_just = f"Visceral aristocratic melodrama with {emo_hits} overt emotional performance markers."
+
+            # 5. Show Representativeness (0-10)
+            core_motifs = ["juliana", "gerald", "alexander", "clarissa", "wedding", "altar", "duke", "marry"]
+            motif_hits = sum(1 for m in core_motifs if m in prompt_lower)
+            rep_score = round(min(10.0, max(5.0, 6.5 + min(3.5, motif_hits * 0.6))), 1)
+            rep_just = "Directly embodies the signature betrayed-bride and vengeful nobility microdrama tropes."
+
+            total = round(hook_score + cliff_score + standalone_score + emo_score + rep_score, 1)
+
             return {
                 "hook": hook_score,
-                "hook_justification": "The initial 3 seconds establish an immediate sharp confrontation." if not is_establishing else "Starts with establishing shots before confrontation.",
+                "hook_justification": hook_just,
                 "cliffhanger": cliff_score,
-                "cliffhanger_justification": "Cuts at the peak of unanswered dramatic tension with no resolution.",
+                "cliffhanger_justification": cliff_just,
                 "standalone": standalone_score,
-                "standalone_justification": "The betrayed vs betrayer dynamic is crystal clear for cold social media viewers.",
+                "standalone_justification": standalone_just,
                 "emotional_intensity": emo_score,
-                "emotional_intensity_justification": "High melodrama and visible aristocratic cruelty produce strong visceral engagement.",
+                "emotional_intensity_justification": emo_just,
                 "show_representativeness": rep_score,
-                "show_representativeness_justification": "Exemplifies the core genre themes of betrayed brides and noble betrayal.",
+                "show_representativeness_justification": rep_just,
                 "total_weighted_score": total
             }
 
         elif schema_name == "PairwiseJudgement":
+            clip_a_match = re.search(r"Clip A:\s*(.*?)\s*Clip B:", user_prompt, re.DOTALL | re.IGNORECASE)
+            clip_b_match = re.search(r"Clip B:\s*(.*)", user_prompt, re.DOTALL | re.IGNORECASE)
+
+            text_a = clip_a_match.group(1).lower() if clip_a_match else ""
+            text_b = clip_b_match.group(1).lower() if clip_b_match else ""
+
+            def rate_clip(text: str) -> float:
+                score = 0.0
+                if "00:00." in text or "00:01." in text:
+                    score += 2.0
+                confrontation_kw = ["cannot marry", "beneath", "altar", "slap", "sister", "refuse", "dignity", "maid"]
+                score += sum(1.2 for w in confrontation_kw if w in text)
+                if "?" in text or "!" in text:
+                    score += 1.8
+                emo_kw = ["cold", "bitter", "defiant", "mocking", "taunting", "callous"]
+                score += sum(0.8 for e in emo_kw if e in text)
+                return score
+
+            score_a = rate_clip(text_a)
+            score_b = rate_clip(text_b)
+
+            winner = "A" if score_a >= score_b else "B"
+            reason = (
+                f"Clip {winner} features tighter opening pacing and more visceral dialogue conflict, "
+                f"creating a sharper dramatic contrast for cold social media audiences."
+            )
             return {
-                "winner": "A",
-                "rationale": "Clip A delivers faster initial momentum in the first 3 seconds and leaves a more urgent unresolved cliffhanger."
+                "winner": winner,
+                "rationale": reason
             }
 
         return {}

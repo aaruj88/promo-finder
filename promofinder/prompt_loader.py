@@ -26,3 +26,4 @@ def load_prompt_file(rel_path: str) -> str:
                 pass
 
     return f"You are an expert microdrama promo analysis engine. Follow schema strictly."
+
