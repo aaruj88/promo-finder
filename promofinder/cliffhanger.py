@@ -10,6 +10,7 @@ from promofinder.models import (
 )
 from promofinder.llm import LLMClient
 from promofinder.cold_viewer import render_clip_lines_text
+from promofinder.prompt_loader import load_prompt_file
 
 logger = logging.getLogger("promofinder.cliffhanger")
 
@@ -58,8 +59,7 @@ def run_cliffhanger_spoiler_check(
         reveals_summary.append(f"- Episode {rev.episode}: {rev.reveal} (Major Spoiler: {rev.is_spoiler})")
     reveals_text = "\n".join(reveals_summary)
 
-    with open("./prompts/cliffhanger_spoiler.md", "r", encoding="utf-8") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt_file("prompts/cliffhanger_spoiler.md")
 
     user_prompt = (
         f"PROPOSED PROMO CLIP:\n{clip_text}\n\n"

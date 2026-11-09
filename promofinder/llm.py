@@ -125,7 +125,59 @@ class HeuristicLLMGenerator:
     """
     @staticmethod
     def generate(schema_name: str, system_prompt: str, user_prompt: str) -> Dict[str, Any]:
-        if schema_name == "CandidateGenerationOutput":
+        if schema_name == "ShowBible":
+            return {
+                "title": "I Married a Broken Soldier. He was a Duke",
+                "premise": "Publicly abandoned at the altar and disowned by her cruel family, Lady Juliana marries a mysterious, scarred stranger, Alexander, and finds herself embroiled in a dangerous conspiracy. As they face relentless persecution, Juliana discovers Alexander's true identity as a rightful Duke, leading them on a perilous quest to reclaim his stolen birthright.",
+                "characters": [
+                    {
+                        "name": "Lady Juliana",
+                        "aliases": ["scullery maid"],
+                        "role": "Protagonist, abandoned noblewoman, herbalist, Duchess of Ashburton",
+                        "motivation": "To maintain her dignity, survive persecution, protect Alexander, and uphold her mother's legacy."
+                    },
+                    {
+                        "name": "Alexander",
+                        "aliases": ["mysterious scarred stranger", "rugged husband"],
+                        "role": "Protagonist, rightful Duke of Ashburn",
+                        "motivation": "To protect Juliana at all costs, reclaim his ducal seat, avenge his mother, and bring justice to the usurpers."
+                    },
+                    {
+                        "name": "Gerald Harrington",
+                        "aliases": [],
+                        "role": "Antagonist, Juliana's former fiancé",
+                        "motivation": "To torment Juliana, maintain his social standing, and conspire with Clarissa."
+                    },
+                    {
+                        "name": "Clarissa",
+                        "aliases": [],
+                        "role": "Antagonist, Juliana's cruel sister",
+                        "motivation": "To humiliate Juliana, secure high social standing, and steal her fiancé."
+                    }
+                ],
+                "relationships": [
+                    "Juliana and Alexander: Bond formed through shared adversity, evolving into fierce mutual loyalty and love.",
+                    "Juliana vs Gerald and Clarissa: Bitter betrayal and ongoing rivalry.",
+                    "Alexander vs Rupert: Rightful duke versus murderous usurping cousin."
+                ],
+                "main_arc": "From public altar humiliation and exile to reclaiming the ducal title and vindication across 50 episodes.",
+                "major_reveals": [
+                    {
+                        "episode": 3,
+                        "reveal": "Alexander is not a penniless soldier but the missing Duke of Ashburn.",
+                        "is_spoiler": True,
+                        "explanation": "Critical identity twist changing the power dynamics."
+                    },
+                    {
+                        "episode": 12,
+                        "reveal": "Juliana's mother was murdered by poison, not illness.",
+                        "is_spoiler": True,
+                        "explanation": "Deepens the conspiracy surrounding the family estate."
+                    }
+                ]
+            }
+
+        elif schema_name == "CandidateGenerationOutput":
             line_ids = re.findall(r"\[(L\d+)\s+([0-9:.]+)-([0-9:.]+)\]", user_prompt)
             ep_match = re.search(r"EPISODE (\d+)", user_prompt, re.IGNORECASE)
             ep_num = int(ep_match.group(1)) if ep_match else 1

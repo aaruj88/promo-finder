@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+from promofinder.prompt_loader import load_prompt_file
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional, Tuple, Dict
 from promofinder.models import (
@@ -57,8 +58,7 @@ def generate_candidates_for_episode(
 
     transcript = render_transcript_with_line_ids(episode)
     
-    with open("./prompts/candidate_generation.md", "r", encoding="utf-8") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt_file("prompts/candidate_generation.md")
 
     user_prompt = (
         f"SHOW PREMISE:\n{bible.premise}\n\n"
@@ -121,8 +121,7 @@ def generate_cross_episode_candidate(
     transcript_a = render_transcript_with_line_ids(ep_a, start_time=ep_a_tail_start)
     transcript_b = render_transcript_with_line_ids(ep_b, end_time=head_s)
 
-    with open("./prompts/cross_episode.md", "r", encoding="utf-8") as f:
-        tmpl = f.read()
+    tmpl = load_prompt_file("prompts/cross_episode.md")
 
     system_prompt = tmpl.replace("{ep_a}", str(ep_a.number)).replace("{ep_b}", str(ep_b.number))
 

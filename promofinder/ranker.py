@@ -14,6 +14,7 @@ from promofinder.models import (
 )
 from promofinder.llm import LLMClient
 from promofinder.cold_viewer import render_clip_lines_text
+from promofinder.prompt_loader import load_prompt_file
 
 logger = logging.getLogger("promofinder.ranker")
 
@@ -48,8 +49,7 @@ def judge_pair(
     text_a = render_clip_lines_text(cand_a.segments, episodes_by_num)
     text_b = render_clip_lines_text(cand_b.segments, episodes_by_num)
 
-    with open("./prompts/pairwise_comparison.md", "r", encoding="utf-8") as f:
-        tmpl = f.read()
+    tmpl = load_prompt_file("prompts/pairwise_comparison.md")
 
     system_prompt = "You are an elite microdrama creative director and performance marketing expert."
     user_prompt = tmpl.replace("{clip_a_text}", text_a).replace("{clip_b_text}", text_b)

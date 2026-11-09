@@ -13,6 +13,7 @@ from promofinder.models import (
 )
 from promofinder.llm import LLMClient
 from promofinder.cold_viewer import render_clip_lines_text
+from promofinder.prompt_loader import load_prompt_file
 
 logger = logging.getLogger("promofinder.scorer")
 
@@ -59,8 +60,7 @@ def score_candidate_promo(
     weights = load_config_weights(config_path)
     clip_text = render_clip_lines_text(segments, episodes_by_num)
 
-    with open("./prompts/rubric_scoring.md", "r", encoding="utf-8") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt_file("prompts/rubric_scoring.md")
 
     user_prompt = (
         f"PROPOSED PROMO CLIP:\n{clip_text}\n\n"

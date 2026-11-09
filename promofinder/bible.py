@@ -21,17 +21,28 @@ def generate_show_bible(
     Uses loglines + continuity notes to identify characters, relationships, premise,
     seasonal arc, and major reveals with episode numbers.
     """
-    if os.path.exists(cache_path):
-        try:
-            with open(cache_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            logger.info(f"Loaded Show Bible from cache: {cache_path}")
-            return ShowBible.model_validate(data)
-        except Exception as e:
-            logger.warning(f"Failed to load cached Show Bible: {e}")
+    # Check multiple candidate cache locations
+    candidate_paths = [
+        cache_path,
+        "./.cache/show_bible.json",
+        "./submission/raw_outputs/show_bible.json",
+        os.path.join(os.path.dirname(__file__), "..", "submission", "raw_outputs", "show_bible.json")
+    ]
+    for cp in candidate_paths:
+        if os.path.exists(cp):
+            try:
+                with open(cp, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                logger.info(f"Loaded Show Bible from cache: {cp}")
+                return ShowBible.model_validate(data)
+            except Exception as e:
+                logger.warning(f"Failed to load cached Show Bible from {cp}: {e}")
 
     llm_client = llm or LLMClient()
-    prompt_template = load_prompt_template("./prompts/show_bible.md")
+    prompt_path = "./prompts/show_bible.md"
+    if not os.path.exists(prompt_path):
+        prompt_path = os.path.join(os.path.dirname(__file__), "..", "prompts", "show_bible.md")
+    prompt_template = load_prompt_template(prompt_path)
 
     # Compile loglines & continuity notes across all 50 episodes
     episodes_summary = []

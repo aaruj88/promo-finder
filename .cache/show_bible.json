@@ -1,0 +1,128 @@
+{
+  "title": "I Married a Broken Soldier. He was a Duke",
+  "premise": "Publicly abandoned at the altar and disowned by her cruel family, Lady Juliana marries a mysterious, scarred stranger, Alexander, and finds herself embroiled in a dangerous conspiracy. As they face relentless persecution, including false accusations and attempts on their lives, Juliana discovers Alexander's true identity as a rightful Duke, leading them on a perilous quest to reclaim his stolen birthright and clear her name against treacherous enemies.",
+  "characters": [
+    {
+      "name": "Lady Juliana",
+      "aliases": [
+        "scullery maid"
+      ],
+      "role": "Protagonist, abandoned noblewoman, herbalist, Duchess of Ashburton (later)",
+      "motivation": "To maintain her dignity, survive persecution, protect her love for Alexander, uphold her mother's legacy of herbal medicine, and seek justice against her tormentors."
+    },
+    {
+      "name": "Alexander",
+      "aliases": [
+        "mysterious scarred stranger",
+        "rugged new husband"
+      ],
+      "role": "Protagonist, rightful Duke of Ashburn",
+      "motivation": "To protect Juliana at all costs, reclaim his ducal seat, avenge his mother, and bring justice to the usurpers who stole his birthright."
+    },
+    {
+      "name": "Gerald Harrington",
+      "aliases": [],
+      "role": "Antagonist, Juliana's former fiancé",
+      "motivation": "To torment Juliana, maintain his social standing, and conspire with Clarissa and other enemies for personal gain."
+    },
+    {
+      "name": "Clarissa",
+      "aliases": [],
+      "role": "Antagonist, Juliana's cruel sister",
+      "motivation": "To humiliate and destroy Juliana, secure her own social and financial standing, and conspire with Gerald."
+    },
+    {
+      "name": "Dowager Duchess",
+      "aliases": [],
+      "role": "Alexander's mother, imprisoned and poisoned",
+      "motivation": "To survive her poisoning, reunite with her son Alexander, and expose the treacherous conspiracy against her family."
+    },
+    {
+      "name": "Rupert",
+      "aliases": [],
+      "role": "Main Antagonist, Alexander's treacherous cousin, usurper of the ducal title",
+      "motivation": "To seize and maintain the ducal title, eliminate Alexander and Juliana, and consolidate his power."
+    },
+    {
+      "name": "Catherine",
+      "aliases": [],
+      "role": "Main Antagonist, Rupert's co-conspirator, Alexander's former lover",
+      "motivation": "To gain power and social standing, eliminate Alexander and Juliana, and seek revenge against Alexander for past rejection."
+    },
+    {
+      "name": "Lord Sterling",
+      "aliases": [],
+      "role": "Antagonist, co-conspirator with Rupert and Catherine",
+      "motivation": "To gain political influence and power through his alliance with Rupert and Catherine."
+    },
+    {
+      "name": "Father Thomas",
+      "aliases": [],
+      "role": "Antagonist, corrupt ecclesiastical authority",
+      "motivation": "To gain territorial control, engage in illicit passion with Catherine, and use his position for personal and political gain."
+    },
+    {
+      "name": "Agnes",
+      "aliases": [],
+      "role": "Minor character, servant, witness",
+      "motivation": "To serve her masters, though she inadvertently becomes a key witness to a new conspiracy."
+    }
+  ],
+  "relationships": [
+    "Juliana and Gerald: Former betrothed, now bitter enemies after his public betrayal.",
+    "Juliana and Clarissa: Sisters, now bitter enemies due to Clarissa's cruelty and betrayal.",
+    "Juliana and Alexander: Newlyweds, deep love, protective bond, and an alliance against common enemies.",
+    "Alexander and Dowager Duchess: Mother and son, separated by conspiracy, reunited in their fight for justice.",
+    "Rupert and Catherine: Conspirators and lovers, united in their ambition to seize the ducal title.",
+    "Alexander and Catherine: Former lovers, now bitter enemies after Catherine's betrayal and Alexander's rejection.",
+    "Rupert and Lord Sterling: Political conspirators, allied in their treasonous plot.",
+    "Catherine and Father Thomas: Conspirators and illicit lovers, forming a new, dangerous alliance.",
+    "Juliana and her mother's legacy: A deep connection through her mother's herbal remedies and journal, which Juliana uses to heal and fight injustice.",
+    "Juliana and the villagers: Juliana earns their gratitude and loyalty through her healing abilities and compassion."
+  ],
+  "main_arc": "Lady Juliana, publicly disgraced and disowned, finds an unexpected alliance and love with the mysterious Alexander. Their humble life is repeatedly threatened by her cruel family and unknown enemies, forcing Alexander to reveal his hidden combat skills. After their home is destroyed, Juliana uncovers a plot to poison the Dowager Duchess, leading to her own imprisonment and a false accusation of witchcraft. Meanwhile, Alexander, revealed to be the rightful Duke, reunites with his mother and orchestrates a dramatic return to reclaim his stolen title and rescue Juliana. Though they achieve justice against the primary conspirators and Alexander reclaims his dukedom, their marriage is immediately challenged, and a humiliated Catherine begins a new, treacherous conspiracy with Father Thomas, setting the stage for future conflict.",
+  "major_reveals": [
+    {
+      "episode": 16,
+      "reveal": "Gerald Harrington is the mastermind behind the attacks on Juliana's medicinal garden.",
+      "is_spoiler": false,
+      "explanation": "This reveal establishes Gerald as a direct, active threat beyond just social humiliation, driving the plot forward by showing his malicious intent."
+    },
+    {
+      "episode": 19,
+      "reveal": "Alexander is of noble birth, his mother is imprisoned, and his ducal seat has been usurped.",
+      "is_spoiler": true,
+      "explanation": "This fundamentally changes the scope of the story from personal revenge to a grand political struggle for a ducal title, revealing Alexander's true identity and the overarching conspiracy."
+    },
+    {
+      "episode": 23,
+      "reveal": "The Dowager Duchess is being poisoned with arsenic.",
+      "is_spoiler": false,
+      "explanation": "This reveal establishes the immediate danger to the Dowager Duchess and the nature of the conspiracy against her, driving Juliana's actions to find a cure."
+    },
+    {
+      "episode": 26,
+      "reveal": "The Dowager Duchess recognizes Alexander's family signet ring on Juliana's hand.",
+      "is_spoiler": true,
+      "explanation": "This is the direct link between Juliana and Alexander's true identity, confirming the Dowager Duchess is Alexander's mother and setting up Juliana's subsequent framing."
+    },
+    {
+      "episode": 35,
+      "reveal": "Alexander's mother escapes captivity and reunites with Alexander, revealing the full conspiracy behind his supposed demise and the identities of the usurpers, Rupert and Catherine.",
+      "is_spoiler": true,
+      "explanation": "This is the full reveal of Alexander's survival, his true identity as the Duke, and the identities of the main antagonists and their treasonous plot, shifting the narrative to Alexander's counter-attack."
+    },
+    {
+      "episode": 45,
+      "reveal": "An ecclesiastical authority declares Alexander and Juliana's marriage legally invalid.",
+      "is_spoiler": true,
+      "explanation": "This is an unexpected twist immediately following their triumph, creating a new major conflict and preventing a clean resolution, setting up the next arc of challenges."
+    },
+    {
+      "episode": 50,
+      "reveal": "Agnes witnesses Catherine and Father Thomas's scandalous intimacy and their treasonous alliance.",
+      "is_spoiler": true,
+      "explanation": "This cliffhanger establishes a new, dangerous alliance between Catherine and Father Thomas and provides a potential witness to expose it, fueling future plotlines and conflicts."
+    }
+  ]
+}

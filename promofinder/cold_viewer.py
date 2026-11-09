@@ -8,6 +8,7 @@ from promofinder.models import (
     ColdViewerOutput,
 )
 from promofinder.llm import LLMClient
+from promofinder.prompt_loader import load_prompt_file
 
 logger = logging.getLogger("promofinder.cold_viewer")
 
@@ -60,8 +61,7 @@ def run_cold_viewer_test(
     """
     clip_text = render_clip_lines_text(segments, episodes_by_num)
     
-    with open("./prompts/cold_viewer.md", "r", encoding="utf-8") as f:
-        system_prompt = f.read()
+    system_prompt = load_prompt_file("prompts/cold_viewer.md")
 
     user_prompt = (
         "Here is a short video clip transcript from a microdrama. "
