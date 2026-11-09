@@ -33,6 +33,14 @@ PRICING: Dict[str, Dict[str, float]] = {
     "gemini-1.5-pro":             {"input": 1.25, "output": 5.00},
     "gemini-2.5-flash":           {"input": 0.075, "output": 0.30},
     "gemini-1.5-flash":           {"input": 0.075, "output": 0.30},
+    # Groq (Ultra-fast, cost-effective inference)
+    "llama-3.3-70b-versatile":    {"input": 0.59, "output": 0.79},
+    "llama-3.1-70b-versatile":    {"input": 0.59, "output": 0.79},
+    "llama-3.1-8b-instant":       {"input": 0.05, "output": 0.08},
+    "mixtral-8x7b-32768":         {"input": 0.24, "output": 0.24},
+    "qwen/qwen3.8-27b":           {"input": 0.20, "output": 0.40},
+    "openai/gpt-oss-120b":        {"input": 0.30, "output": 0.60},
+    "openai/gpt-oss-20b":         {"input": 0.10, "output": 0.20},
     # Default fallback
     "default":                    {"input": 1.00, "output": 5.00}
 }
@@ -245,8 +253,36 @@ class LLMClient:
         self.anthropic_client = None
         self.openai_client = None
         self.gemini_client = None
+        self.groq_client = None
 
+        self._load_local_env()
         self._init_clients()
+
+    def _load_local_env(self):
+        """Auto-load .env from current directory, adjacent directories, or Streamlit secrets."""
+        for p in [".env", "./.env", "../multihop-rag/.env", "../llm_engineering/.env"]:
+            if os.path.exists(p):
+                try:
+                    with open(p, "r", encoding="utf-8") as f:
+                        for line in f:
+                            line = line.strip()
+                            if line and not line.startswith("#") and "=" in line:
+                                k, v = line.split("=", 1)
+                                k = k.strip()
+                                v = v.strip().strip('"').strip("'")
+                                if k not in os.environ:
+                                    os.environ[k] = v
+                except Exception:
+                    pass
+
+        try:
+            import streamlit as st
+            if hasattr(st, "secrets"):
+                for key in ["GROQ_API_KEY", "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY"]:
+                    if key in st.secrets and key not in os.environ:
+                        os.environ[key] = str(st.secrets[key])
+        except Exception:
+            pass
 
     def _init_clients(self):
         # Auto-detect provider if "auto"
@@ -255,10 +291,14 @@ class LLMClient:
             m_lower = self.model.lower()
             if any(x in m_lower for x in ["claude"]):
                 active_provider = "anthropic"
+            elif any(x in m_lower for x in ["groq", "llama", "mixtral", "qwen", "gpt-oss"]):
+                active_provider = "groq"
             elif any(x in m_lower for x in ["gpt", "o1", "o3", "o4", "chatgpt"]):
                 active_provider = "openai"
             elif any(x in m_lower for x in ["gemini"]):
                 active_provider = "gemini"
+            elif os.environ.get("GROQ_API_KEY") and not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("OPENAI_API_KEY"):
+                active_provider = "groq"
             elif os.environ.get("ANTHROPIC_API_KEY"):
                 active_provider = "anthropic"
             elif os.environ.get("OPENAI_API_KEY"):
@@ -266,8 +306,21 @@ class LLMClient:
             elif os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY"):
                 active_provider = "gemini"
 
+        # Initialize Groq Client
+        if active_provider in ["groq", "auto"]:
+            key = os.environ.get("GROQ_API_KEY")
+            if key:
+                try:
+                    import groq
+                    self.groq_client = groq.Groq(api_key=key)
+                    if not any(x in self.model.lower() for x in ["llama", "mixtral", "qwen", "gpt-oss"]):
+                        self.model = "llama-3.3-70b-versatile"
+                    logger.info(f"Initialized Groq client with model {self.model}")
+                except Exception as e:
+                    logger.warning(f"Could not initialize Groq client: {e}")
+
         # Initialize Anthropic Client
-        if active_provider in ["anthropic", "auto"]:
+        if active_provider in ["anthropic", "auto"] and not self.groq_client:
             key = os.environ.get("ANTHROPIC_API_KEY")
             if key:
                 try:
@@ -278,7 +331,7 @@ class LLMClient:
                     logger.warning(f"Could not initialize Anthropic client: {e}")
 
         # Initialize OpenAI Client (or OpenAI-compatible endpoint)
-        if active_provider in ["openai", "auto"] and not self.anthropic_client:
+        if active_provider in ["openai", "auto"] and not self.anthropic_client and not self.groq_client:
             key = os.environ.get("OPENAI_API_KEY")
             if key or self.api_base:
                 try:
@@ -294,19 +347,7 @@ class LLMClient:
                     logger.warning(f"Could not initialize OpenAI client: {e}")
 
         # Initialize Google GenAI Client
-        if active_provider in ["gemini", "auto"] and not self.anthropic_client and not self.openai_client:
-            if not os.environ.get("GEMINI_API_KEY") and not os.environ.get("GOOGLE_API_KEY"):
-                for p in ["../multihop-rag/.env", "../llm_engineering/.env"]:
-                    if os.path.exists(p):
-                        try:
-                            with open(p, "r", encoding="utf-8") as f:
-                                for line in f:
-                                    if "=" in line and not line.startswith("#"):
-                                        k, v = line.strip().split("=", 1)
-                                        if k in ["GEMINI_API_KEY", "GOOGLE_API_KEY"]:
-                                            os.environ[k] = v
-                        except Exception:
-                            pass
+        if active_provider in ["gemini", "auto"] and not self.anthropic_client and not self.openai_client and not self.groq_client:
             key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
             if key:
                 try:
@@ -338,7 +379,7 @@ class LLMClient:
                     logger.warning(f"Failed to parse cached response: {e}")
 
         # If no active remote provider, go directly to Heuristic Generator
-        if not self.anthropic_client and not self.openai_client and not self.gemini_client:
+        if not self.anthropic_client and not self.openai_client and not self.gemini_client and not self.groq_client:
             logger.debug(f"Using Heuristic Generator for {schema.__name__}")
             heuristic_dict = HeuristicLLMGenerator.generate(schema.__name__, system_prompt, user_prompt)
             raw_json = json.dumps(heuristic_dict)
@@ -454,7 +495,29 @@ class LLMClient:
                 global_token_tracker.record(in_tok, out_tok, cached=False)
                 return completion.choices[0].message.content
 
-        # 3. Google GenAI Provider
+        # 3. Groq Provider (Fast Llama-3/Qwen/Mixtral inference)
+        elif self.groq_client:
+            prompt_with_schema = (
+                f"{system_prompt}\n\n"
+                f"You MUST respond ONLY with a single JSON object strictly matching this JSON schema:\n"
+                f"{json.dumps(schema_dict, indent=2)}\n"
+                f"Do not include Markdown backticks (```json), commentary, or extra text."
+            )
+            completion = self.groq_client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": prompt_with_schema},
+                    {"role": "user", "content": user_prompt}
+                ],
+                response_format={"type": "json_object"},
+                temperature=temperature
+            )
+            in_tok = completion.usage.prompt_tokens if completion.usage else len(user_prompt) // 4
+            out_tok = completion.usage.completion_tokens if completion.usage else 500
+            global_token_tracker.record(in_tok, out_tok, cached=False)
+            return completion.choices[0].message.content
+
+        # 4. Google GenAI Provider
         elif self.gemini_client:
             from google.genai import types
             gemini_model = self.model if "gemini" in self.model.lower() else "gemini-2.5-flash"

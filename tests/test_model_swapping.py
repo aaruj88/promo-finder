@@ -17,6 +17,10 @@ def test_model_auto_detection_and_swapping():
     client_gemini = LLMClient(model="gemini-2.5-pro")
     assert client_gemini.model == "gemini-2.5-pro"
 
+    # Test Groq model resolution
+    client_groq = LLMClient(model="llama-3.3-70b-versatile", provider="groq")
+    assert client_groq.model == "llama-3.3-70b-versatile"
+
 def test_pricing_coverage_for_stronger_models():
     # Verify pricing is defined for leading strong models
     assert "claude-3-7-sonnet-20250219" in PRICING

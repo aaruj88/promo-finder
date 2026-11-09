@@ -16,7 +16,7 @@ def main():
     run_parser.add_argument("--limit", type=int, default=None, help="Limit number of episodes to process")
     run_parser.add_argument("--config", default="./config.yaml", help="Path to config.yaml")
     run_parser.add_argument("--model", default=None, help="Swap LLM model (e.g. claude-3-7-sonnet-20250219, gpt-4o, gemini-2.5-pro)")
-    run_parser.add_argument("--provider", default=None, choices=["auto", "anthropic", "openai", "gemini", "heuristic"], help="LLM provider (default: auto)")
+    run_parser.add_argument("--provider", default=None, choices=["auto", "anthropic", "openai", "gemini", "groq", "heuristic"], help="LLM provider (default: auto)")
     run_parser.add_argument("--api-base", default=None, help="Custom API base URL (e.g. for OpenRouter, vLLM, DeepSeek)")
     run_parser.add_argument("--no-pairwise", action="store_true", help="Disable pairwise LLM comparisons (ablation)")
     run_parser.add_argument("--no-cold-viewer", action="store_true", help="Disable cold viewer test (ablation)")

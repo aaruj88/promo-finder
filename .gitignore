@@ -9,3 +9,4 @@ venv/
 .cache/
 .DS_Store
 *.log
+
