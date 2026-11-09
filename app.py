@@ -1,5 +1,12 @@
 import os
+import sys
 import json
+
+# Ensure project root is in Python sys.path on cloud environments
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
 import streamlit as st
 import pandas as pd
 from typing import Dict, Any, List
@@ -444,20 +451,36 @@ with tab_live:
                 
     if st.button("🚀 Run Live Promo Discovery"):
         clean_model = chosen_model.split(" ")[0]
+        if clean_model.startswith("Deterministic"):
+            clean_model = "heuristic"
         with st.spinner(f"Running Promo Finder with `{clean_model}` across {ep_count} episodes..."):
-            import subprocess
-            cmd = f"python -m promofinder run --input ./data --out ./out/live_run --limit {ep_count} --model {clean_model}"
             try:
-                res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-                if res.returncode == 0:
-                    st.success("Discovery completed successfully!")
-                    live_path = "./out/live_run/promos.json"
-                    if os.path.exists(live_path):
-                        with open(live_path) as fp:
-                            res_json = json.load(fp)
-                        st.json(res_json[:2])
-                else:
-                    st.error(f"Error running pipeline: {res.stderr}")
+                from promofinder.pipeline import PipelineRunner
+                provider_override = "groq" if any(x in clean_model.lower() for x in ["llama", "mixtral", "qwen", "groq"]) else ("heuristic" if clean_model == "heuristic" else None)
+                runner = PipelineRunner(
+                    config_path=os.path.join(ROOT_DIR, "config.yaml"),
+                    model=clean_model,
+                    provider=provider_override
+                )
+                data_dir = os.path.join(ROOT_DIR, "data")
+                out_dir = os.path.join(ROOT_DIR, "out", "live_run")
+                
+                runner.run(
+                    input_dir=data_dir,
+                    out_dir=out_dir,
+                    limit_episodes=ep_count,
+                    enable_cold_viewer=True,
+                    enable_pairwise=True
+                )
+                
+                st.success("Discovery completed successfully!")
+                live_path = os.path.join(out_dir, "promos.json")
+                if os.path.exists(live_path):
+                    with open(live_path, "r", encoding="utf-8") as fp:
+                        res_json = json.load(fp)
+                    st.markdown(f"**Discovered {len(res_json)} valid promo candidates! Top picks:**")
+                    for p_item in res_json[:2]:
+                        st.markdown(f"- **{p_item.get('promo_id')}** (Ep {p_item.get('segments', [{}])[0].get('episode')}): *{p_item.get('hook')}* $\\rightarrow$ **Cliffhanger**: *{p_item.get('cliffhanger')}* (Score: {p_item.get('scores', {}).get('total')}/100)")
             except Exception as ex:
                 st.error(f"Execution failed: {ex}")
 
